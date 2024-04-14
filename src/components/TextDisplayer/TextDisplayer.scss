@@ -1,0 +1,35 @@
+.textDisplayer {
+  box-sizing: border-box;
+  width: 90%;
+  padding: 20px 30px;
+  letter-spacing: 0.15rem;
+  border: 1px solid rgb(173, 173, 173);
+
+  &__valid {
+    text-shadow: 1px 1px 2px hsl(110, 95%, 70%);
+    color: hsl(110, 100%, 40%);
+    &--space {
+      display: inline-block;
+      height: 13px;
+      width: 3px;
+      margin: 0 2px;
+      background-color: hsl(110, 95%, 80%);
+      border-radius: 10px;
+      transform: translateY(2px);
+    }
+  }
+
+  &__invalid {
+    text-shadow: 1px 1px 2px hsl(0, 100%, 80%);
+    color: hsl(0, 100%, 60%);
+    &--space {
+      display: inline-block;
+      height: 13px;
+      width: 3px;
+      margin: 0 2px;
+      background-color: hsl(0, 100%, 90%);
+      border-radius: 10px;
+      transform: translateY(2px);
+    }
+  }
+}

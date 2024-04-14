@@ -1,0 +1,17 @@
+.textWriter {
+  width: 90%;
+  height: 150px;
+
+  & > textarea {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    resize: none;
+    padding: 10px;
+    letter-spacing: 0.05rem;
+
+    &:disabled {
+      background-color: hsl(110, 95%, 85%);
+    }
+  }
+}

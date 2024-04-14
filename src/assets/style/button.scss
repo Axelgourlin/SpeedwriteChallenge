@@ -1,0 +1,16 @@
+.button {
+  padding: 5px 20px;
+  border: none;
+  border-radius: 3px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &__primary {
+    background-color: hsl(200, 80%, 60%);
+    color: #fff;
+
+    &:hover {
+      background-color: hsl(200, 80%, 50%);
+    }
+  }
+}

@@ -1,0 +1,12 @@
+.app {
+  color: var(--main-font-color);
+  background-color: var(--main-bg-color);
+  height: 100vh;
+
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding-top: 5%;
+}
