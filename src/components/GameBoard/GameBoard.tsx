@@ -2,6 +2,7 @@ import { useState } from "react";
 import { TextDisplayer } from "../TextDisplayer/TextDisplayer";
 import { TextWriter } from "../TextWriter/TextWriter";
 import { SelectText } from "../SelectText/SelectText";
+import { Counter } from "../Counter/Counter";
 
 import textData from "../../textData.json";
 
@@ -10,6 +11,9 @@ import "./GameBoard.scss";
 export const GameBoard = () => {
   const [selectedText, setSelectedText] = useState<string>(textData["easy-1"]);
   const [writtenText, setWrittenText] = useState<string>("");
+  const [count, setCount] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [intervalId, setIntervalId] = useState<undefined | number>();
 
   const handleSelectTextChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedText = event.target.value;
@@ -17,9 +21,20 @@ export const GameBoard = () => {
   };
 
   const handleWrittenTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    if (!isPlaying) {
+      setIsPlaying(true);
+      const intervalId = startCounter();
+      setIntervalId(intervalId);
+    }
+
     const currentString = event.target.value;
     checkValidity(currentString);
     setWrittenText(currentString);
+
+    if (currentString === selectedText) {
+      setIsPlaying(false);
+      clearInterval(intervalId);
+    }
   };
 
   const cleanClasses = () => {
@@ -55,14 +70,25 @@ export const GameBoard = () => {
     });
   };
 
+  const startCounter = () => {
+    const intervalId = setInterval(() => setCount((prevCount) => prevCount + 1), 10);
+    return intervalId;
+  };
+
   const reset = () => {
     setWrittenText(() => "");
     cleanClasses();
+    setCount(0);
+    setIsPlaying(false);
+    clearInterval(intervalId);
   };
 
   return (
     <div className="gameBoard">
-      <SelectText label="Select Text" values={Object.keys(textData)} handleChange={handleSelectTextChange} />
+      <div className="gameBoard__panel">
+        <SelectText label="Select Text" values={Object.keys(textData)} handleChange={handleSelectTextChange} />
+        <Counter count={count} />
+      </div>
       <TextDisplayer text={selectedText} />
       <TextWriter handleChange={handleWrittenTextChange} disable={writtenText === selectedText} value={writtenText} />
       <button className="button button__primary" onClick={reset}>
