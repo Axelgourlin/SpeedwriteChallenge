@@ -18,6 +18,7 @@ export const GameBoard = () => {
   const handleSelectTextChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedText = event.target.value;
     setSelectedText((textData as Record<string, string>)[selectedText]);
+    reset();
   };
 
   const handleWrittenTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
