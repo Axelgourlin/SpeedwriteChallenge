@@ -11,6 +11,7 @@ export const Counter = ({ count }: { count: number }) => {
 
   return (
     <div className="counter" style={{ display: count ? "block" : "none" }}>
+      <span>Time: </span>
       <span className="counter__item" style={minutes < 1 ? {} : { opacity: 1 }}>
         {formattedMinutes}
       </span>
