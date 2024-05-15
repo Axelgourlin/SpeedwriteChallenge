@@ -151,7 +151,15 @@ export const GameBoard = () => {
       <button className="button button__primary" onClick={reset}>
         Reset
       </button>
-      <span style={{ display: gameStep.writtenText === selectedText ? "inline" : "none" }}>Gongrats !</span>
+      <span
+        style={{
+          visibility: gameStep.writtenText === selectedText ? "visible" : "hidden",
+          position: "absolute",
+          bottom: "2rem",
+        }}
+      >
+        Gongrats !
+      </span>
     </div>
   );
 };

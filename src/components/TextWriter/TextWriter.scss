@@ -9,6 +9,8 @@
     resize: none;
     padding: 10px;
     letter-spacing: 0.05rem;
+    background-color: var(--main-bg-color);
+    color: var(--main-font-color);
 
     &:disabled {
       background-color: hsl(110, 95%, 85%);

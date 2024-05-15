@@ -1,7 +1,8 @@
 .gameBoard {
+  position: relative;
   width: 80vw;
   padding: 2rem 0;
-  background-color: hsl(0, 0%, 100%);
+  background-color: var(--secondary-bg-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
